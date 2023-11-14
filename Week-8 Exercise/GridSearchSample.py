@@ -14,7 +14,7 @@ from sklearn.metrics import accuracy_score
 iris = datasets.load_iris()
 X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=0.55, random_state=42)
 parameters = {'kernel':('linear', 'rbf'), 'C':[1, 10]}
-svc = svm.SVC()
+svc = svm.SVC(C=10, kernel='rbf')
 grid = GridSearchCV(svc, parameters,cv=10, scoring='accuracy', return_train_score=False,verbose=1)
 grid.fit(X_train, y_train)
 print("Best parameters found: ", grid.best_params_)
